@@ -3,7 +3,7 @@
 [RedwoodJS Tutorial](https://redwoodjs.com/docs/tutorial/foreword)    
 [GitHub](https://github.com/redwoodjs/redwood)  
 
-### Chapter 1: Introduction
+### Introduction
 __Create new application__  
 To create a new RedWood application
 ```bash
@@ -20,12 +20,12 @@ $ yarn redwood dev
 ```  
 
 __Generate a Scaffolding__  
-We can generate a set components required for a CRUDE operation on a model using the  _scaffold_ command.
+We can generate a set components required for a CRUD operation on a model using the  `scaffold` command.
 ```bash
 $ yarn redwood generate scaffold post
 ```  
-This will create all the pages, components, and services necessary to perform all CRUD actions on our _post_ model.
-The files generate are described in the table below.  
+This will create all the pages, components, and services necessary to perform all CRUD actions on our _Post_ model.  
+The files generated are described in the table below.  
 
 File Description      | File Path
 ----------------------|------------
@@ -61,6 +61,45 @@ __Basic Redwood CLI Operations__
 Operation            | Command
 ---------------------|--------
 Start Dev Server     | `yarn redwood dev`
+Run Tests            | `yarn redwood test`
 Generate a page      | `yarn redwood generate page my-page`
 Run prisma migration | `yarn redwood prisma migrate dev`
+Generate a page      | `yarn redwood generate page home /`
 Generate scaffolding | `yarn redwood generate scaffold post`
+Generate a cell      | `yarn rw generate cell name`
+Access Deploy Options| `yarn rw setup deploy --help`
+Access Auth Options  | `yarn rw setup auth --help`
+Access Style Options | `yarn rw setup ui --help`  
+To upgrade your app  | `yarn redwood upgrade`
+Add package the web workspace | `yarn workspace web add marked`
+Add package the api workspace | `yarn workspace api add better-fs`
+__Story Book__  
+
+__Cell__  
+Cells are a declarative approach to data fetching and one of Redwood's signature modes of abstraction.  
+While it might seem like there's a lot of magic involved, all a Cell really does is execute a GraphQL query and manage its lifecycle.  
+To generate a cell, use the `generate cell` command
+```bash
+$ yarn rw generate cell name
+```
+This creates a directory named _[name]Cell_ in _web/src/components_ with four files:
+1. `<name>Cell.js`
+2. `<name>Cell.test.js`
+3. `<name>Cell.stories.js`
+4. `<name>Cell.mock.js`.  
+
+If you want a Cell that renders a list instead of a Single model, you can use the plural name for the model
+```bash
+$ yarn rw generate cell names
+```
+Or use the `--list` flag for words which plural is same as singular
+```bash
+$ yarn rw generate cell fish
+```
+[Learn More](https://redwoodjs.com/docs/cells)
+
+### Chapter 1: Getting Started
+Creating your first page
+```bash
+$ yarn redwood generate page home /
+```
