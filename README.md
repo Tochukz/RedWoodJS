@@ -64,6 +64,7 @@ Start Dev Server     | `yarn redwood dev`
 Run Tests            | `yarn redwood test`
 Generate a page      | `yarn redwood generate page my-page`
 Run prisma migration | `yarn redwood prisma migrate dev`
+Generate a layout    | `yarn redwood generate layout blog`
 Generate a page      | `yarn redwood generate page home /`
 Generate scaffolding | `yarn redwood generate scaffold post`
 Generate a cell      | `yarn rw generate cell name`
@@ -103,3 +104,14 @@ Creating your first page
 ```bash
 $ yarn redwood generate page home /
 ```
+
+Creating your second page
+```bash
+$ yarn redwood generate page about
+```
+Creating a layout
+```bash
+$ yarn redwood g layout blog
+```
+
+### Chapter 2: Getting Dynamic
