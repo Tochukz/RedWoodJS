@@ -115,3 +115,42 @@ $ yarn redwood g layout blog
 ```
 
 ### Chapter 2: Getting Dynamic
+__Setting up database schema__  
+1. Create a database using your database  
+```bash
+create database red_blog;
+```
+2. Update _DATABASE_URL_ variable in your _.env_ file
+```
+DATABASE_URL="mysql://username:password@localhost:3306/red_blog"
+```
+3. Add a Table definition to _schema.prisma_ file
+```sql
+model Post {
+    id        Int      @id @default(autoincrement())
+    title     String
+    body      String
+    createdAt DateTime @default(now())
+}
+```
+4. Run the migration
+```bash
+$ yarn rw prisma migrate dev
+```
+You will be prompted for the name of the migration, and you can write "_create post_" without the quotes.  
+
+5. Fireup Prisma Studio  
+Using npx directly:
+```bash
+$ npx prisma studio --schema api/db/schema.prisma
+```
+Alternatively, you can use _redwood_  
+```
+$ yarn rw prisma studio
+```
+
+__Create Scaffolding__  
+To create a collection of components required for CRUD operation
+```bash
+$ yarn rw g scaffold post
+```
