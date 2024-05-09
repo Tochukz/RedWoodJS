@@ -67,10 +67,11 @@ Run prisma migration | `yarn redwood prisma migrate dev`
 Generate a layout    | `yarn redwood generate layout blog`
 Generate a page      | `yarn redwood generate page home /`
 Generate scaffolding | `yarn redwood generate scaffold post`
-Generate a cell      | `yarn rw generate cell name`
-Access Deploy Options| `yarn rw setup deploy --help`
-Access Auth Options  | `yarn rw setup auth --help`
-Access Style Options | `yarn rw setup ui --help`  
+Generate a cell      | `yarn redwood generate cell name`
+Generate types       | `yarn redwood generate types`
+Access Deploy Options| `yarn redwood generate setup deploy --help`
+Access Auth Options  | `yarn redwood generate setup auth --help`
+Access Style Options | `yarn redwood generate setup ui --help`  
 To upgrade your app  | `yarn redwood upgrade`
 Add package the web workspace | `yarn workspace web add marked`
 Add package the api workspace | `yarn workspace api add better-fs`
@@ -150,7 +151,18 @@ $ yarn rw prisma studio
 ```
 
 __Create Scaffolding__  
-To create a collection of components required for CRUD operation
+To create all the pages, components and services necessary to perform all CRUD actions on our posts table:
 ```bash
 $ yarn rw g scaffold post
+```
+
+__Create a cell__  
+```bash
+$ yarn rw g cell Articles
+```
+
+__Generate types__  
+If the dev server was not running at the time a cell was generated, you may need to generate the types separately.
+```bash
+$ yarn rw g types
 ```
