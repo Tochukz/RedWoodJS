@@ -62,10 +62,10 @@ Operation            | Command
 ---------------------|--------
 Start Dev Server     | `yarn redwood dev`
 Run Tests            | `yarn redwood test`
-Generate a page      | `yarn redwood generate page my-page`
 Run prisma migration | `yarn redwood prisma migrate dev`
 Generate a layout    | `yarn redwood generate layout blog`
 Generate a page      | `yarn redwood generate page home /`
+Generate a component | `yarn rw g component article`
 Generate scaffolding | `yarn redwood generate scaffold post`
 Generate a cell      | `yarn redwood generate cell name`
 Generate types       | `yarn redwood generate types`
@@ -146,23 +146,30 @@ Using npx directly:
 $ npx prisma studio --schema api/db/schema.prisma
 ```
 Alternatively, you can use _redwood_  
-```
+```bash
 $ yarn rw prisma studio
 ```
 
-__Create Scaffolding__  
+__Generate Scaffolding__  
 To create all the pages, components and services necessary to perform all CRUD actions on our posts table:
 ```bash
 $ yarn rw g scaffold post
 ```
 
-__Create a cell__  
+__Generate a cell__  
 ```bash
 $ yarn rw g cell Articles
 ```
+All of the props you give to the cell will be automatically available as props in the render components.
+Only the ones that match the GraphQL variables list will be given to the query.
 
 __Generate types__  
 If the dev server was not running at the time a cell was generated, you may need to generate the types separately.
 ```bash
 $ yarn rw g types
+```
+
+__Generate a component__  
+```bash
+$ yarn rw g component Article
 ```
