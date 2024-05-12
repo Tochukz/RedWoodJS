@@ -62,19 +62,21 @@ Operation            | Command
 ---------------------|--------
 Start Dev Server     | `yarn redwood dev`
 Run Tests            | `yarn redwood test`
-Run prisma migration | `yarn redwood prisma migrate dev`
+Genertate and run prisma migration | `yarn redwood prisma migrate dev`
 Generate a layout    | `yarn redwood generate layout blog`
 Generate a page      | `yarn redwood generate page home /`
-Generate a component | `yarn rw g component article`
+Generate a component | `yarn redwood generate component article`
 Generate scaffolding | `yarn redwood generate scaffold post`
 Generate a cell      | `yarn redwood generate cell name`
 Generate types       | `yarn redwood generate types`
+Generate SDL & service | `yarn redwood generate sdl Contact`
 Access Deploy Options| `yarn redwood generate setup deploy --help`
 Access Auth Options  | `yarn redwood generate setup auth --help`
 Access Style Options | `yarn redwood generate setup ui --help`  
 To upgrade your app  | `yarn redwood upgrade`
 Add package the web workspace | `yarn workspace web add marked`
 Add package the api workspace | `yarn workspace api add better-fs`
+
 __Story Book__  
 
 __Cell__  
@@ -172,4 +174,13 @@ $ yarn rw g types
 __Generate a component__  
 ```bash
 $ yarn rw g component Article
+```
+
+__Generate SDL and service__  
+```bash
+$ yarn rw g sdl Contact
+```
+if you just need a simple read-only SDL, you can skip creating the create/update/delete mutations by passing a flag to the SDL generator like so: 
+```bash
+$ yarn rw g sdl Contact --no-crud
 ```
