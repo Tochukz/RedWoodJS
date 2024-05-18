@@ -176,11 +176,25 @@ __Generate a component__
 $ yarn rw g component Article
 ```
 
+### Chapter 3: Building Forms
+
 __Generate SDL and service__  
 ```bash
 $ yarn rw g sdl Contact
 ```
-if you just need a simple read-only SDL, you can skip creating the create/update/delete mutations by passing a flag to the SDL generator like so: 
+This will create the following files under the api directory:
+1. `api/src/graphql/contacts.sdl.ts`
+2. `api/src/services/contacts/contacts.ts`
+
+If you just need a simple read-only SDL, you can skip creating the create/update/delete mutations by passing a `--no-crud` flag to the SDL generator like so:
 ```bash
 $ yarn rw g sdl Contact --no-crud
 ```
+
+__GraphQL Playground__  
+There is GraphQL Yoga's GraphiQL, a web-based GUI for GraphQL APIs at `http://localhost:8911/graphql`.    
+To learn more about GraphQL Yoga see [GraphQL Yoga Docs](https://the-guild.dev/graphql/yoga-server/docs)  
+
+__Server side validation__  
+GraphQL does some server side validation for you. This is done for example with the required field declaration such is `String!` in an SDL file that adds a constraint that those fields cannot be null as soon as it arrives on the api side.  
+In some cases you might need to implement some validation inside in service such as in the case for the format of an email field input.  

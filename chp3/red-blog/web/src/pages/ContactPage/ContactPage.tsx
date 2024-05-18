@@ -30,6 +30,7 @@ interface FormValues {
   email: string
   message: string
 }
+
 const ContactPage = () => {
   const formMethods = useForm({ mode: 'onBlur' })
 
@@ -44,7 +45,7 @@ const ContactPage = () => {
   })
 
   const formSubmit: SubmitHandler<FormValues> = (formData) => {
-    console.log('fomr', formData)
+    console.log('formData', formData)
     create({ variables: { input: formData } })
   }
   return (
