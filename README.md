@@ -198,3 +198,5 @@ To learn more about GraphQL Yoga see [GraphQL Yoga Docs](https://the-guild.dev/g
 __Server side validation__  
 GraphQL does some server side validation for you. This is done for example with the required field declaration such is `String!` in an SDL file that adds a constraint that those fields cannot be null as soon as it arrives on the api side.  
 In some cases you might need to implement some validation inside in service such as in the case for the format of an email field input.  
+
+### Chapter 4: Authentication 
