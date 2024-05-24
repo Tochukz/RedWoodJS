@@ -58,24 +58,26 @@ Note that the package `humanize-string` is also installed in the scaffolding ope
 
 __Basic Redwood CLI Operations__
 
-Operation            | Command
----------------------|--------
-Start Dev Server     | `yarn redwood dev`
-Run Tests            | `yarn redwood test`
-Genertate and run prisma migration | `yarn redwood prisma migrate dev`
-Generate a layout    | `yarn redwood generate layout blog`
-Generate a page      | `yarn redwood generate page home /`
-Generate a component | `yarn redwood generate component article`
-Generate scaffolding | `yarn redwood generate scaffold post`
-Generate a cell      | `yarn redwood generate cell name`
-Generate types       | `yarn redwood generate types`
-Generate SDL & service | `yarn redwood generate sdl Contact`
-Access Deploy Options| `yarn redwood generate setup deploy --help`
-Access Auth Options  | `yarn redwood generate setup auth --help`
-Access Style Options | `yarn redwood generate setup ui --help`  
-To upgrade your app  | `yarn redwood upgrade`
-Add package the web workspace | `yarn workspace web add marked`
-Add package the api workspace | `yarn workspace api add better-fs`
+Operation               | Command
+------------------------|--------
+Start Dev Server        | `yarn redwood dev`
+Run Tests               | `yarn redwood test`
+Generate and run prisma migration | `yarn redwood prisma migrate dev`
+Generate data migration | `yarn redwood generate dataMigration seed-users`
+Run the data migration  | `yarn redwood data-migrate up`
+Generate a layout       | `yarn redwood generate layout blog`
+Generate a page         | `yarn redwood generate page home /`
+Generate a component    | `yarn redwood generate component article`
+Generate scaffolding    | `yarn redwood generate scaffold post`
+Generate a cell         | `yarn redwood generate cell name`
+Generate types          | `yarn redwood generate types`
+Generate SDL & service  | `yarn redwood generate sdl Contact`
+Access Deploy Options   | `yarn redwood generate setup deploy --help`
+Access Auth Options     | `yarn redwood generate setup auth --help`
+Access Style Options    | `yarn redwood generate setup ui --help`  
+To upgrade your app          | `yarn redwood upgrade`
+Add package to web workspace | `yarn workspace web add marked`
+Add package to api workspace | `yarn workspace api add better-fs`
 
 __Story Book__  
 
@@ -199,4 +201,4 @@ __Server side validation__
 GraphQL does some server side validation for you. This is done for example with the required field declaration such is `String!` in an SDL file that adds a constraint that those fields cannot be null as soon as it arrives on the api side.  
 In some cases you might need to implement some validation inside in service such as in the case for the format of an email field input.  
 
-### Chapter 4: Authentication 
+### Chapter 4: Authentication
