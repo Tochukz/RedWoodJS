@@ -3,6 +3,7 @@
 [RedwoodJS Tutorial](https://redwoodjs.com/docs/tutorial/foreword)    
 [GitHub](https://github.com/redwoodjs/redwood)  
 
+
 ### Introduction
 __Create new application__  
 To create a new RedWood application
@@ -58,22 +59,25 @@ Note that the package `humanize-string` is also installed in the scaffolding ope
 
 __Basic Redwood CLI Operations__
 
-Operation            | Command
----------------------|--------
-Start Dev Server     | `yarn redwood dev`
-Run Tests            | `yarn redwood test`
-Genertate and run prisma migration | `yarn redwood prisma migrate dev`
-Generate a layout    | `yarn redwood generate layout blog`
-Generate a page      | `yarn redwood generate page home /`
-Generate a component | `yarn redwood generate component article`
-Generate scaffolding | `yarn redwood generate scaffold post`
-Generate a cell      | `yarn redwood generate cell name`
-Generate types       | `yarn redwood generate types`
-Generate SDL & service | `yarn redwood generate sdl Contact`
-Access Deploy Options| `yarn redwood generate setup deploy --help`
-Access Auth Options  | `yarn redwood generate setup auth --help`
-Access Style Options | `yarn redwood generate setup ui --help`  
-To upgrade your app  | `yarn redwood upgrade`
+Operation                | Command
+-------------------------|--------
+Start Dev Server         | `yarn redwood dev`
+Run Tests                | `yarn redwood test`
+Generate and run prisma migration | `yarn redwood prisma migrate dev`
+Generate a layout        | `yarn redwood generate layout blog`
+Generate a page          | `yarn redwood generate page home /`
+Generate a component     | `yarn redwood generate component article`
+Generate scaffolding     | `yarn redwood generate scaffold post`
+Generate a cell          | `yarn redwood generate cell name`
+Generate types           | `yarn redwood generate types`
+Generate SDL & service   | `yarn redwood generate sdl Contact`
+Setup auth components    | `yarn redwood setup auth dbAuth`
+Generate auth components | `yarn redwood generate dbAuth`
+Generate a session secret| `yarn redwood generate secret`
+Access Deploy Options    | `yarn redwood generate setup deploy --help`
+Access Auth Options      | `yarn redwood generate setup auth --help`
+Access Style Options     | `yarn redwood generate setup ui --help`  
+To upgrade your app      | `yarn redwood upgrade`
 Add package the web workspace | `yarn workspace web add marked`
 Add package the api workspace | `yarn workspace api add better-fs`
 
@@ -199,4 +203,54 @@ __Server side validation__
 GraphQL does some server side validation for you. This is done for example with the required field declaration such is `String!` in an SDL file that adds a constraint that those fields cannot be null as soon as it arrives on the api side.  
 In some cases you might need to implement some validation inside in service such as in the case for the format of an email field input.  
 
-### Chapter 4: Authentication 
+### Chapter 4: Authentication
+__Auth Setup__  
+To generate all the component needed to implement authentication
+```bash
+$ cd api
+$ yarn add -D @redwoodjs/auth-dbauth-setup@7.4.3
+$ yarn rw setup auth dbAuth
+```
+When prompted to _"Enable WebAuthn support"_, pick no — this is a separate piece of functionality we won't need for now.  
+The `setup auth dbAuth` command generates the following changes:  
+Web workspace:  
+1. Adds `@redwoodjs/auth-dbauth-web`  package
+2. Generate `web/src/auth.ts`
+3. Updates `web/src/App.tsx`
+4. Updates `web/src/Routes.ts`
+
+Api workspace:  
+1. Adds `@redwoodjs/auth-dbauth-api`  package
+2. Generates `api/src/functions/auth.ts` file
+3. Generates `api/src/lib/auth.ts` file
+4. Updates `api/src/functions/graphql.ts` file.
+
+Root Workspace:
+1. Adds `SESSION_SECRET` environment variable to `.env` file.
+If you want to generate a new secret
+```bash
+$ yarn rw generate secret
+```
+It will output the new secret on the terminal after which you can copy it to you `.env` file.  
+
+If you need simple Login, Signup and Forgot Password pages
+```bash  
+$ yarn rw generate dbAuth
+```
+
+__Auth Model__  
+You may need to add a couple of fields to your User model when you create it.  
+
+__Auth Generate__  
+To generate the React authentication component
+```bash
+$  yarn rw g dbAuth
+```  
+When prompted with _"Enable WebAuthn support ..."_ you should select false.  
+
+This `generate dbAuth` command will generate the following React components:
+1. `web/src/pages/ForgotPasswordPage/ForgotPasswordPage.tsx`
+2. `web/src/pages/LoginPage/LoginPage.tsx`
+3. `web/src/pages/ResetPasswordPage/ResetPasswordPage.tsx`
+4. `web/src/pages/SignupPage/SignupPage.tsx`
+It will also update the `Routes.tsx` file and add the newly generated pages to it.
