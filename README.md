@@ -3,7 +3,6 @@
 [RedwoodJS Tutorial](https://redwoodjs.com/docs/tutorial/foreword)    
 [GitHub](https://github.com/redwoodjs/redwood)  
 
-
 ### Introduction
 __Create new application__  
 To create a new RedWood application
@@ -64,6 +63,8 @@ Operation                | Command
 Start Dev Server         | `yarn redwood dev`
 Run Tests                | `yarn redwood test`
 Generate and run prisma migration | `yarn redwood prisma migrate dev`
+Generate data migration  | `yarn redwood generate dataMigration seed-users`
+Run the data migration   | `yarn redwood data-migrate up`
 Generate a layout        | `yarn redwood generate layout blog`
 Generate a page          | `yarn redwood generate page home /`
 Generate a component     | `yarn redwood generate component article`
