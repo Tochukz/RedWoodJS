@@ -255,3 +255,42 @@ This `generate dbAuth` command will generate the following React components:
 3. `web/src/pages/ResetPasswordPage/ResetPasswordPage.tsx`
 4. `web/src/pages/SignupPage/SignupPage.tsx`
 It will also update the `Routes.tsx` file and add the newly generated pages to it.
+
+#### Deployment
+__Database__
+There are several hosting providers where you can quickly start up a Postgres instance:
+1. [Railway](https://railway.app/)
+2. [Heroku](https://www.heroku.com/postgres)
+3. [Digital Ocean](https://www.digitalocean.com/products/managed-databases)
+4. [AWS](https://aws.amazon.com/rds/postgresql/)  
+
+We choose [Railway](https://railway.app/) because it is free and the easiest use.  
+
+You can delete your existing migration files in from `api/db/migrations` and then recreate a new migration
+```bash
+$ yarn rw prisma migrate dev
+```
+When prompted for the migration name you can call it _"initial schema"_.  
+This will create a single migration file for the current state of our schema as definition in the `schema.prisma` file.
+
+__Compute__  
+We will be deploying the app to [Netlify](https://app.netlify.com/).  
+First, we setup netlify deploy
+```bash
+$ yarn rw setup deploy netlify
+```  
+This will create a `netlify.toml` file in the root on the project.
+It will also update the `redwood.toml` file by changing the `apiUrl` value from `/.redwood/functions` to `/.netlify/functions`
+
+__Deploy__
+First add the `@redwoodjs/cli-data-migrate` package
+```bash
+$ cd api
+$ yarn add --dev @redwoodjs/cli-data-migrate
+````
+To deploy the application, go to you Netlify dashboard and do the  deployment there.
+
+To deploy the to Netlify From your local
+```bash
+$ yarn rw deploy netlify
+```
