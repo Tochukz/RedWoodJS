@@ -294,3 +294,5 @@ To deploy the to Netlify From your local
 ```bash
 $ yarn rw deploy netlify
 ```
+
+### Chapter 5: Introduction to Storybook
