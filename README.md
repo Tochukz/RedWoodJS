@@ -49,7 +49,6 @@ Create Page           | `web/src/pages/Post/NewPostPage/NewPostPage.tsx`
 Current Model Page    | `web/src/pages/Post/PostPage/PostPage.tsx`
 Model Collection Page | `web/src/pages/Post/PostsPage/PostsPage.tsx`
 
-
 The following files are updated in the process
 1. `web/src/App.tsx`
 2. `web/src/Routes.tsx`
@@ -81,6 +80,13 @@ Access Style Options     | `yarn redwood generate setup ui --help`
 To upgrade your app      | `yarn redwood upgrade`
 Add package the web workspace | `yarn workspace web add marked`
 Add package the api workspace | `yarn workspace api add better-fs`
+
+
+__Basic Prisma command__  
+Operation                  | command
+---------------------------|-------------------------
+Generate and run migration | `npx prisma migrate dev`
+Run generated migrations   | `npx prisma migrate deploy`
 
 __Story Book__  
 
