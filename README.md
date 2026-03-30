@@ -87,6 +87,9 @@ Operation                  | command
 ---------------------------|-------------------------
 Generate and run migration | `npx prisma migrate dev`
 Run generated migrations   | `npx prisma migrate deploy`
+Generate Prisma Client     | `npx prisma generate`
+Seed database              | `npx prisma db seed`
+Reset Database             | `npx prisma migrate reset`
 
 __Story Book__  
 
